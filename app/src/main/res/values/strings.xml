@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">NoteGame</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    //
+    <string name="title_genre">Genre</string>
+    <string name="title_filter">filter</string>
+    <string name="save">save</string>
+    <string name="gameTitle">Game Title</string>
+    <string name="releaseDate">Release Date</string>
+    <string name="exampleGenre">Rpg,Action</string>
+    <string name="detail">Detail</string>
+    <string name="watchTrailer">Watch Trailer</string>
+    <string name="imageDescription">Image Description</string>
+    <string name="something_wrong">Something Wrong !</string>
+    <string name="nameGame">Nama Game Example</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="platform">Platform</string>
+    <string name="exampleText">Example Text</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="descriptionText">Description</string>
+</resources>
