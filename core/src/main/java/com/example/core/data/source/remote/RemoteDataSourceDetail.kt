@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.core.data.Resource
 import com.example.core.data.source.remote.network.ApiService
 import com.example.core.data.source.remote.response.DetailResponseGames
+import com.example.core.data.source.remote.response.ScreenShotsResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -22,6 +23,18 @@ class RemoteDataSourceDetail(
                 val data = apiService.getDetailGames(id, key)
                 emit(data)
             }catch (e: Exception){
+                Log.e("RemoteDataSourceDetail", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getScreenShotsGame(id: Int): Flow<List<ScreenShotsResponse>>{
+        return flow {
+            try {
+                val response = apiService.getScreenshots(id = id, key)
+                val data = response.results
+                if (data?.isNotEmpty() ?: return@flow) emit(data)
+            } catch (e:Exception){
                 Log.e("RemoteDataSourceDetail", e.toString())
             }
         }.flowOn(Dispatchers.IO)

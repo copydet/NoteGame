@@ -54,6 +54,7 @@ configurations.all {
 
 dependencies {
     implementation project(":core")
+    implementation 'com.github.gifffert:ExpandableTextView:0.1.6'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

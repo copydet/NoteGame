@@ -1,6 +1,5 @@
 package com.example.core.di
 
-import android.provider.Contacts.SettingsColumns.KEY
 import androidx.paging.ExperimentalPagingApi
 import androidx.room.Room
 import com.example.core.BuildConfig

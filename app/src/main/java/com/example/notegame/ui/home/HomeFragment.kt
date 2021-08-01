@@ -1,6 +1,8 @@
 package com.example.notegame.ui.home
 
 import android.content.Context
+import android.content.Intent
+import android.os.Build.ID
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,8 @@ import com.example.core.domain.model.Games
 import com.example.notegame.R
 import com.example.notegame.databinding.FragmentHomeBinding
 import com.example.notegame.ui.base.BaseFragment
+import com.example.notegame.ui.detail.DetailFragment
+import com.example.notegame.ui.detail.sreenshot.ScreenShootAdapter
 import com.example.notegame.ui.home.adapter.GamesHomeAdapter
 import com.example.notegame.ui.home.adapter.GamesLoadAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -58,6 +62,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             }
         }
     }
+
 
     private fun navigateToDetail(games: Games){
         findNavController().navigate(

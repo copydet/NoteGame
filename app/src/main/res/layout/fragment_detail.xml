@@ -17,10 +17,23 @@
         app:layoutDescription="@xml/fragment_detail_xml_constraintlayout_scene"
         tools:context=".ui.detail.DetailFragment">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="1dp"
+            app:tint="@null"
+            app:fabSize="mini"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
         <ImageView
             android:id="@+id/imageDetail"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="235dp"
             android:src="@drawable/example_image"
             app:imageGames="@{args.image}"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,12 +47,13 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:fontFamily="@font/press_start"
-            android:textSize="16sp"
             android:background="@drawable/rounded_text"
+            android:fontFamily="@font/press_start"
+            android:gravity="center"
             android:padding="10dp"
-            android:textStyle="bold"
             android:text="@{args.name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageDetail"
@@ -56,38 +70,135 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
                 <TableLayout
                     android:id="@+id/tableLayout2"
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_screenshoot"
-                    tools:layout_editor_absoluteX="8dp">
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_screenshoot">
 
                     <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp">
 
                         <TextView
                             android:id="@+id/release"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/zcool"
                             android:text="@string/releaseDate"
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/releaseTxt"
+                            android:background="@drawable/rounded_text"
+                            android:padding="7dp"
+                            android:fontFamily="@font/press_start"
+                            android:text="@{args.release}"
+                            android:textSize="10sp"
+                            tools:ignore="SmallSp"
+                            tools:text="@string/exampleText" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/update"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/zcool"
+                            android:text="@string/update"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/updateTxt"
+                            android:background="@drawable/rounded_text"
+                            android:padding="7dp"
+                            android:fontFamily="@font/press_start"
+                            android:text="@{args.updateDateFormat}"
+                            android:textSize="10sp"
+                            tools:ignore="SmallSp"
+                            tools:text="@string/exampleText" />
                     </TableRow>
                 </TableLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView_screenshoot"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/item_list_screenshoot" />
+                <TableLayout
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_screenshoot">
+
+                    <TableRow android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_marginStart="8dp"
+                            android:id="@+id/playtime"
+                            android:fontFamily="@font/zcool"
+                            android:text="@string/playtime"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/playtimeTxt"
+                            android:background="@drawable/rounded_text"
+                            android:fontFamily="@font/press_start"
+                            android:gravity="center"
+                            android:padding="7dp"
+                            android:text="@{args.playtime.toString()+` Hours`}"
+                            android:textSize="10sp"
+                            tools:ignore="SmallSp"
+                            tools:text="@string/exampleText" />
+                    </TableRow>
+
+                    <TableRow android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/rating"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/zcool"
+                            android:text="@string/ratings"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/ratingTxt"
+                            android:background="@drawable/rounded_text"
+                            android:fontFamily="@font/press_start"
+                            android:gravity="center"
+                            android:padding="7dp"
+                            android:text="@{args.rating.toString()}"
+                            android:textSize="10sp"
+                            tools:ignore="SmallSp"
+                            tools:text="@string/exampleText" />
+                    </TableRow>
+                </TableLayout>
 
                 <TextView
                     android:id="@+id/textView3"
@@ -96,17 +207,19 @@
                     android:fontFamily="@font/zcool"
                     android:text="@string/platform"
                     android:textSize="15sp"
+                    android:layout_marginStart="8dp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/textView"
+                    app:layout_constraintStart_toStartOf="@+id/tableLayout2"
                     app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_platform"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="8dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
@@ -116,64 +229,207 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/zcool"
                     android:text="@string/title_genre"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView_platform" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_genre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerView_platform"
                     app:layout_constraintTop_toBottomOf="@+id/textView"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:layout_editor_absoluteX="8dp"
                     tools:listitem="@layout/item_list_genre" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_screenshoot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_list_screenshoot" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="2dp"
                     android:fontFamily="@font/zcool"
                     android:text="@string/descriptionText"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/developers"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_developers" />
+
+                <TextView
+                    android:id="@+id/publishers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/zcool"
+                    android:text="@string/publishers"
+                    android:textSize="15sp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textView"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView_genre" />
 
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="0dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_publishers"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerView_genre"
+                    app:layout_constraintTop_toBottomOf="@+id/publishers"
+                    tools:listitem="@layout/item_list_publisher" />
+
+                <TextView
+                    android:id="@+id/developers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/zcool"
+                    android:text="@string/developers"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/publishers"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_publishers" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_developers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerView_publishers"
+                    app:layout_constraintTop_toBottomOf="@+id/developers"
+                    tools:listitem="@layout/item_list_developers" />
+
+                <ru.embersoft.expandabletextview.ExpandableTextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:background="@drawable/rounded_text"
-                    android:fontFamily="@font/press_start"
                     android:padding="10dp"
-                    android:text="@{args.description}"
                     android:textAlignment="textStart"
                     android:textSize="10sp"
                     android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="@+id/recyclerView_genre"
-                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:etv_animationTime="20"
+                    app:etv_expandLines="4"
+                    app:etv_showLine="false"
+                    app:etv_textContentColor="@color/black"
+                    app:etv_textContentSize="14sp"
+                    app:etv_textExpand="More..."
+                    app:etv_textShrink="Less"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerView_developers"
                     app:layout_constraintTop_toBottomOf="@+id/textView2"
                     tools:ignore="SmallSp"
-                    tools:maxLines="7"
                     tools:text="@tools:sample/lorem/random" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/zcool"
+                    android:text="@string/website"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/description" />
+
+                <TextView
+                    android:id="@+id/website"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_text"
+                    android:fontFamily="@font/press_start"
+                    android:padding="7dp"
+                    android:text="@{args.website}"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="@+id/description"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    tools:ignore="SmallSp"
+                    tools:text="@string/exampleText" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/zcool"
+                    android:text="@string/stores"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/website" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_stores"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    tools:listitem="@layout/item_list_stores" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/zcool"
+                    android:text="@string/tags"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView5"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_stores" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_tags"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="15dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6"
+                    tools:listitem="@layout/item_list_tags" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 

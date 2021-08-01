@@ -27,4 +27,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="descriptionText">Description</string>
+    <string name="update">Update</string>
+    <string name="publishers">Publishers</string>
+    <string name="playtime">Playtime</string>
+    <string name="ratings">Rating</string>
+    <string name="developers">Developers</string>
+    <string name="website">Website</string>
+    <string name="stores">Stores</string>
+    <string name="tags">Tags</string>
 </resources>

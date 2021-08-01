@@ -12,12 +12,10 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        buildConfigField("String", "KEY", "\"69946fa0064f48d5a6b1b84d77e30923\"")
+        buildConfigField("String", "KEY", "\"6396adb410444f0d87bb8a4b83cb83d5\"")
     }
 
     buildTypes {

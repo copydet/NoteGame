@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
+<MotionScene
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
@@ -8,15 +8,36 @@
         motion:constraintSetStart="@id/start"
         motion:duration="1000">
        <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/imageDetail"
+               motion:framePosition="100"
+               android:alpha="0" />
        </KeyFrameSet>
+        <OnSwipe />
+        <OnSwipe />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
-        <Constraint
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/tableLayout" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:layout_height="45dp"
+            android:layout_width="match_parent"
+            android:id="@+id/imageDetail"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:visibility="visible" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/back_btn"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/back_btn"
+            android:layout_marginStart="8dp" />
     </ConstraintSet>
 </MotionScene>

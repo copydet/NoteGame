@@ -4,6 +4,7 @@ import androidx.paging.PagedList
 import androidx.paging.PagingData
 import com.example.core.domain.model.Games
 import com.example.core.domain.model.SavedGames
+import com.example.core.domain.model.ScreenShots
 import com.example.core.domain.repository.IGamesRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -31,4 +32,7 @@ class GamesInteractor (private val iGamesRepository: IGamesRepository): IGamesUs
         iGamesRepository.getGames(id)
 
     override suspend fun getGamesById(id: Int) : Flow<Games> = iGamesRepository.getGamesById(id)
+
+    override suspend fun getScreenShotsGame(id: Int) : Flow<List<ScreenShots>> =
+        iGamesRepository.getScreenShotsGame(id)
 }

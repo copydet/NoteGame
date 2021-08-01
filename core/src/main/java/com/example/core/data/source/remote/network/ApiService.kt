@@ -1,7 +1,9 @@
 package com.example.core.data.source.remote.network
 
 import com.example.core.data.source.remote.response.BaseResponseGames
+import com.example.core.data.source.remote.response.BaseScreenshotsResponse
 import com.example.core.data.source.remote.response.DetailResponseGames
+import com.example.core.data.source.remote.response.ScreenShotsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -22,6 +24,12 @@ interface ApiService {
         @Path("id") id: Int,
         @Query("key") key: String,
     ): DetailResponseGames
+
+    @GET("games/{id}/screenshots")
+    suspend fun getScreenshots(
+        @Path("id") id: Int,
+        @Query("key") key: String
+    ):BaseScreenshotsResponse<ScreenShotsResponse>
 
     @GET("games")
     suspend fun getSearchGames(

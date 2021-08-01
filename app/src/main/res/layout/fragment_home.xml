@@ -22,7 +22,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_bar_main"
-            tools:itemCount="1"
+            tools:itemCount="3"
             tools:listitem="@layout/item_list_game" />
 
         <ProgressBar

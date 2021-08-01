@@ -8,6 +8,7 @@ import com.example.core.data.source.remote.RemoteDataSource
 import com.example.core.data.source.remote.RemoteDataSourceDetail
 import com.example.core.domain.model.Games
 import com.example.core.domain.model.SavedGames
+import com.example.core.domain.model.ScreenShots
 import com.example.core.domain.repository.IGamesRepository
 import com.example.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
@@ -49,6 +50,13 @@ class GamesRepository (
             DataMapper.mapEntityToDomainGames(it)
         }
 // finish
+
+    //take a ScreenshotItem
+
+    override suspend fun getScreenShotsGame(id: Int): Flow<List<ScreenShots>> =
+        remoteDataSourceDetail.getScreenShotsGame(id).map {
+            DataMapper.responseToDomainScreenShots(it)
+        }
 
 
     override fun getSearchGames(search: String): Flow<PagingData<Games>> = Pager(

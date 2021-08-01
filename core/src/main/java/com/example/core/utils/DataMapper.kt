@@ -7,6 +7,7 @@ import com.example.core.data.source.local.entity.SavedGamesEntity
 import com.example.core.data.source.remote.response.*
 import com.example.core.domain.model.Games
 import com.example.core.domain.model.SavedGames
+import com.example.core.domain.model.ScreenShots
 
 object DataMapper{
 
@@ -42,24 +43,28 @@ object DataMapper{
         }
 
     fun responseToDomainGames(input: DetailResponseGames) = Games(
-        id = input.id ?: 0,
-        name = input.name,
-        release = input.released,
-        update = input.updated,
-        image = input.backgroundImage,
-        rating = input.rating,
-        playtime = input.playtime,
-        description = input.description,
-        website = input.website,
-        genres = input.genres,
-        stores = input.stores,
-        publishers = input.publishers,
-        developers = input.developers,
-        tags = input.tags,
-        platform = input.parentPlatforms,
-        screenShoots = input.shortScreenshots,
-        added = input.added
-    )
+            id = input.id ?: 0,
+            name = input.name,
+            release = input.released,
+            update = input.updated,
+            image = input.backgroundImage,
+            rating = input.rating,
+            playtime = input.playtime,
+            description = input.description,
+            website = input.website,
+            genres = input.genres,
+            stores = input.stores.map {
+                                      it.store
+            },
+            publishers = input.publishers,
+            developers = input.developers,
+            tags = input.tags,
+            platform = input.parentPlatforms.map {
+                                                 it.platform
+            },
+
+            added = input.added
+        )
 
 
     fun mapGamesEntitiesToDomain(input: GamesEntity): Games =
@@ -99,4 +104,18 @@ object DataMapper{
             null
         }
     }
+
+    fun responseToDomainScreenShots(input: List<ScreenShotsResponse>): List<ScreenShots>{
+        val list = ArrayList<ScreenShots>()
+        input.map {
+            val data = ScreenShots(
+                ssId = it.id,
+                image = it.image
+            )
+            list.add(data)
+        }
+        return list
+    }
 }
+
+

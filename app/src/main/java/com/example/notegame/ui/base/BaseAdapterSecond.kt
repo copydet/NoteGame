@@ -10,18 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notegame.BR
 
 abstract class BaseAdapterSecond<T>(
-    val onClick: (T) -> Unit = {},
+    var onClick: (T) -> Unit = {},
     diffUtil: DiffUtil.ItemCallback<T>,
 ): ListAdapter<T, BaseAdapterSecond<T>.ViewHolder>(diffUtil) {
-    inner class ViewHolder(private val binding: ViewDataBinding):
-            RecyclerView.ViewHolder(binding.root){
-                fun bind(item: T){
-                    binding.apply {
-                        setVariable(BR.item, item)
-                        executePendingBindings()
-                    }
-                }
-            }
 
     protected abstract val getLayoutRes: Int
 
@@ -43,6 +34,16 @@ abstract class BaseAdapterSecond<T>(
         holder.apply {
             itemView.setOnClickListener { onItemClick(item) }
             bind(item)
+        }
+    }
+
+    inner class ViewHolder(private val binding: ViewDataBinding):
+        RecyclerView.ViewHolder(binding.root){
+        fun bind(item: T){
+            binding.apply {
+                setVariable(BR.item, item)
+                executePendingBindings()
+            }
         }
     }
 }

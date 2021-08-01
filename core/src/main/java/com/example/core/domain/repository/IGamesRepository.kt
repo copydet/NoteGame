@@ -5,6 +5,7 @@ import androidx.paging.PagingData
 import com.example.core.data.Resource
 import com.example.core.domain.model.Games
 import com.example.core.domain.model.SavedGames
+import com.example.core.domain.model.ScreenShots
 import kotlinx.coroutines.flow.Flow
 
 interface IGamesRepository {
@@ -18,4 +19,6 @@ interface IGamesRepository {
 
     suspend fun getGames(id: Int): Flow<Games>
     suspend fun getGamesById(id: Int): Flow<Games>
+
+    suspend fun getScreenShotsGame(id: Int): Flow<List<ScreenShots>>
 }

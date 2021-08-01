@@ -2,6 +2,7 @@ package com.example.core.domain.model
 
 import android.os.Parcelable
 import com.example.core.data.source.remote.response.*
+import com.example.core.utils.parseDateFormat
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
@@ -20,11 +21,12 @@ data class Games (
 
     //RecyclerView
     val genres: @RawValue List<GenresItem>? = emptyList(),
-    val platform: @RawValue List<ParentPlatformsItem>? = emptyList(),
+    val platform: @RawValue List<Platform>? = emptyList(),
     val publishers: @RawValue List<PublishersItem>? = emptyList(),
     val developers: @RawValue List<DevelopersItem>? = emptyList(),
     val tags: @RawValue List<TagsItem>? = emptyList(),
-    val stores: @RawValue List<StoresItem>? = emptyList(),
-    val screenShoots: @RawValue List<ShortScreenshotsItem>? = emptyList()
+    val stores: @RawValue List<Store>? = emptyList()
 
-): Parcelable
+): Parcelable {
+    fun getUpdateDateFormat(): String = update?.parseDateFormat("yyyy-MM-dd") ?: ""
+}
