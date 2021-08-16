@@ -1,13 +1,19 @@
 # NoteGame
 This is my first personal project that continues from my previous coding course training, and this project is planned to have some experimental features, this project will be very long and very long because I still need a lot to learn, I hope I can finish it soon
-
+#
 The name of this application is NoteGame, which should make it easier for gamers to see the latest games.
 
-#Application built using
+#
+Application built using
+#
 -Retrofit
+#
 -Dependency Injection With Koin
+#
 -Modularation
+#
 -MVVM
+#
 -Coroutines Flow
 
 #Notice
