@@ -22,4 +22,5 @@ This project is still not completely correct, because there are bugs that I have
 
 #Thanks To:
 -https://rawg.io/ for shared rest api
+#
 -dicoding indonesia for teaching me
