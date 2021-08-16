@@ -35,10 +35,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             when(destination.id){
                 R.id.navigation_home -> binding.navView.show()
                 R.id.detailFragment -> binding.navView.hide()
+                R.id.searchFragment -> binding.navView.show()
             }
         }
     }
 
     override fun onNavigateUp(): Boolean = navController.navigateUp() || super.onSupportNavigateUp()
+
 
 }

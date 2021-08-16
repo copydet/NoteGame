@@ -15,6 +15,7 @@ abstract class BaseFragment<B : ViewDataBinding> constructor(
     @LayoutRes val layoutRes: Int
 ): Fragment() {
     protected lateinit var binding: B
+    private var job : Job? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,5 +29,6 @@ abstract class BaseFragment<B : ViewDataBinding> constructor(
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        job?.cancel()
     }
 }

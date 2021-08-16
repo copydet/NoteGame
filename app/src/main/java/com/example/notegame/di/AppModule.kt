@@ -4,6 +4,7 @@ import com.example.core.domain.usecase.GamesInteractor
 import com.example.core.domain.usecase.IGamesUseCase
 import com.example.notegame.ui.detail.DetailViewModel
 import com.example.notegame.ui.home.HomeViewModel
+import com.example.notegame.ui.search.SearchViewModel
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -20,6 +21,9 @@ val viewModuleModule = module {
     }
     viewModel {
         HomeViewModel(get())
+    }
+    viewModel {
+        SearchViewModel(get())
     }
     viewModel {
         DetailViewModel(get(), get())

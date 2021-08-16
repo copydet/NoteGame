@@ -11,17 +11,17 @@ import com.example.core.domain.model.ScreenShots
 
 object DataMapper{
 
-    fun mapListGamesResponseToEntities(input: List<DetailResponseGames>): List<GamesEntity> = input.map {
+    fun mapListGamesResponseToEntities(input: List<ResultsItem>): List<GamesEntity> = input.map {
         GamesEntity(
             id = it.id ?: 0,
             name = it.name,
             release = it.released,
-            update = it.updated,
+            update = null,
             image = it.backgroundImage,
-            rating = it.rating,
-            playtime = it.playtime,
-            description = it.description,
-            website = it.website,
+            rating = null,
+            playtime = null,
+            description = null,
+            website = null,
             added = it.added
         )
     }

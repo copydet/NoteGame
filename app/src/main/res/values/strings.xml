@@ -35,4 +35,5 @@
     <string name="website">Website</string>
     <string name="stores">Stores</string>
     <string name="tags">Tags</string>
+    <string name="search_game">Search Game...</string>
 </resources>

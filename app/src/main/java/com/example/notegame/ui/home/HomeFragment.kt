@@ -49,9 +49,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                     header = GamesLoadAdapter { homeAdapter.retry() },
                     footer = GamesLoadAdapter { homeAdapter.retry() }
                 )
+                homeAdapter.addLoadStateListener {
+                    recyclerViewGames.isVisible =
+                        it.source.refresh is LoadState.NotLoading
+                }
                 layoutManager = LinearLayoutManager(context)
             }
+            appBarMain.btnSearch.setOnClickListener{
+                navigateToSearch()
+            }
         }
+    }
+
+    private fun navigateToSearch() {
+        findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToSearchFragment())
     }
 
     private fun subscribeUi(){

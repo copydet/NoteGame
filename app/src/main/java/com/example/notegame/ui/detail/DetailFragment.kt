@@ -1,7 +1,9 @@
 package com.example.notegame.ui.detail
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,9 +19,12 @@ import com.example.notegame.ui.detail.sreenshot.ScreenShootAdapter
 import com.example.notegame.ui.detail.store.StoreAdapter
 import com.example.notegame.ui.detail.tags.TagsAdapter
 import com.example.notegame.utils.ext.observe
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
 import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@ExperimentalCoroutinesApi
 class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_detail){
 
     private val viewModel : DetailViewModel by viewModel()
@@ -32,7 +37,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
     private val tagsAdapter by lazy { TagsAdapter() }
     private val screenShotsAdapter by lazy { ScreenShootAdapter() }
     private var isShrink = true
-
+    private var job : Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,7 +77,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
                 setHasFixedSize(true)
                 adapter = this@DetailFragment.screenShotsAdapter
             }
-            backBtn.setOnClickListener { findNavController().popBackStack() }
+            backBtn.setOnClickListener { findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToNavigationHome()) }
         }
     }
 
@@ -105,5 +110,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
         observe(viewModel.screenShots){
             screenShotsAdapter.setData(it)
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        job?.cancel()
     }
 }
