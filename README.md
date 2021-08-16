@@ -15,6 +15,8 @@ Application built using
 -MVVM
 #
 -Coroutines Flow
+#
+-RecyclerView
 
 #Notice
 This project is still not completely correct, because there are bugs that I haven't been able to fix, and also the features of the rest api that I use are very limited so I'm thinking of discontinuing this project, but if I have free time I will continue it again.
